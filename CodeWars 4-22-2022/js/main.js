@@ -21,7 +21,7 @@ let number = function(busStops){
    return total
  }
 
- let number = function(busStops){
+ number = function(busStops){
   return busStops.reduce((a,b)=>{
     return a+b[0]-b[1]
    },0)
