@@ -44,3 +44,7 @@ function isValidWalk(walk) {
         walk.forEach((c)=>res[c]++)
         return walk.length === 10 && res.n == res.s && res.e == res.w
     }
+
+    function isValidWalk(walk){
+        return walk.length == 10 && !walk.reduce(function(w,step){return w + {"n":-1,"s":1,"e":99,"w":-99}[step]},0)
+    }
