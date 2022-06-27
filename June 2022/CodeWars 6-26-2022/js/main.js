@@ -43,3 +43,13 @@
 //array of integers
 //find index where sum of integers to left of n is equal to right
 //if none exists, return -1
+
+function findEvenIndex(arr){
+    let left = 0, right = arr.reduce(function(pv,cv){return pv + cv}, 0)
+    for(let i =0; i< arr.length; i++){
+        if(i>0)left += arr[i-1]
+        right -= arr[i]
+        if(left == right) return i
+    }
+    return -1
+}
