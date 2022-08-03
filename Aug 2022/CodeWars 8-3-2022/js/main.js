@@ -16,7 +16,7 @@
 
 // [Personal thanks to Professor Jim Fowler on Coursera for his awesome classes that I really recommend to any math enthusiast and for showing me this mathematical curiosity too with his usual contagious passion :)]
 
-function tribonacci(signature,n){
+let tribonacci = (signature,n) =>{
 	if(n === 0){return []}
 	if(n<=2){return [n]}
   for(let i = 0;i<n;i++){
