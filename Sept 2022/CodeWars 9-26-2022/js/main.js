@@ -1,37 +1,44 @@
-// Once upon a time, on a way through the old wild mountainous west,…
-// … a man was given directions to go from one point to another. The directions were "NORTH", "SOUTH", "WEST", "EAST". Clearly "NORTH" and "SOUTH" are opposite, "WEST" and "EAST" too.
+// Write a function partlist that gives all the ways to divide a list (an array) of at least two elements into two non-empty parts.
 
-// Going to one direction and coming back the opposite direction right away is a needless effort. Since this is the wild west, with dreadful weather and not much water, it's important to save yourself some energy, otherwise you might die of thirst!
+// Each two non empty parts will be in a pair (or an array for languages without tuples or a structin C - C: see Examples test Cases - )
+// Each part will be in a string
+// Elements of a pair must be in the same order as in the original array.
+// a = ["az", "toto", "picaro", "zone", "kiwi"] -->
+// [["az", "toto picaro zone kiwi"], ["az toto", "picaro zone kiwi"], ["az toto picaro", "zone kiwi"], ["az toto picaro zone", "kiwi"]] 
 
-// How I crossed a mountainous desert the smart way.
-// The directions given to the man are, for example, the following (depending on the language):
+function partlist(arr) {
+    let string = ''
+let array = arr.map((ele,index)=>{
+string = index === 0 ? string += ele : string += ' ' + ele 
+ let array = arr.slice(index+1,arr.length)
+ array = array.join(' ')
+return [string, array]
+})
+array.pop()
+// return array
+// return [[arr[0],`${arr[1]} ${arr[2]} ${arr[3]} ${arr[4]}`]]
+// return [[`${arr[0]} ${arr[1]}`,`${arr[2]} ${arr[3]} ${arr[4]}`]]
+return array
+}
 
-// ["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"].
-// or
-// { "NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST" };
-// or
-// [North, South, South, East, West, North, West]
-// You can immediately see that going "NORTH" and immediately "SOUTH" is not reasonable, better stay to the same place! So the task is to give to the man a simplified version of the plan. A better plan in this case is simply:
+// partlist([ 'I', 'wish', 'I', 'hadn\'t', 'come' ])  -> 
 
-// ["WEST"]
-// or
-// { "WEST" }
-// or
-// [West]
-// Other examples:
-// In ["NORTH", "SOUTH", "EAST", "WEST"], the direction "NORTH" + "SOUTH" is going north and coming back right away.
+// [ [ 'I', 'wish I hadn\'t come' ],
+//   [ 'I wish', 'I hadn\'t come' ],
+//   [ 'I wish I', 'hadn\'t come' ],
+//   [ 'I wish I hadn\'t', 'come' ] ]
 
-// The path becomes ["EAST", "WEST"], now "EAST" and "WEST" annihilate each other, therefore, the final result is [] (nil in Clojure).
+//given an array of at least 2 elements
+//split into 2 non-empty parts
+//each part will be a pair and a string, and must remain in the same order as the original array
 
-// In ["NORTH", "EAST", "WEST", "SOUTH", "WEST", "WEST"], "NORTH" and "SOUTH" are not directly opposite but they become directly opposite after the reduction of "EAST" and "WEST" so the whole path is reducible to ["WEST", "WEST"].
+//1. define what a pair is
+//1.5 has to be non-empty, and remain in the same order of the original array
+//2. the pairs have to be all different, pairing the different elements together
+//3. put each pair into their own array
+//4. return the new array
 
-// Task
-// Write a function dirReduc which will take an array of strings and returns an array of strings with the needless directions removed (W<->E or S<->N side by side).
-
-// The Haskell version takes a list of directions with data Direction = North | East | West | South.
-// The Clojure version returns nil when the path is reduced to nothing.
-// The Rust version takes a slice of enum Direction {North, East, West, South}.
-// See more examples in "Sample Tests:"
-// Notes
-// Not all paths can be made simpler. The path ["NORTH", "WEST", "SOUTH", "EAST"] is not reducible. "NORTH" and "WEST", "WEST" and "SOUTH", "SOUTH" and "EAST" are not directly opposite of each other and can't become such. Hence the result path is itself : ["NORTH", "WEST", "SOUTH", "EAST"].
-// if you want to translate, please ask before translating.
+// index 0 , index 1 - index 4
+// 0 - 1 , 2 -4
+// 0 - 2 , 3 - 4
+// 0 - 3, 4
