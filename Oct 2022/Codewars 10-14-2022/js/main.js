@@ -54,4 +54,4 @@ return arr.sort()
 //if any of the strings in array 2 contain any of the strings of array 1
 //return the index of array 1 based on when it appears in array 2
 //sort the order of array 1
-//return the the new array
+//return the the new arrayx
