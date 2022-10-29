@@ -1,20 +1,22 @@
-// Count distinct elements in every window of size k
-// Given an array of size n and an integer k, return the count of distinct contiguous numbers for all windows of size k. Consider that k is always lower or equals to n.
+// You know about simple Array.diff task. Now try to solve enhanced version!
 
-// Example:
-// ``` Input: arr = {1, 2, 1, 3, 4, 2, 3} k = 4 Since we have n = 7 and k = 4, we have 4 windows with 4 contiguous elements.
-// Answer: [3,4,4,3]
-// ([1,2,1,3,4,2,3], 4, [3,4,4,3]);
-// ([1,2,1,3,4,2,3,3], 2, [2,2,2,2,2,2,1]);
-// ([1, 2, 1, 3, 4, 2, 3, 3], 8, [4]);
+// Your goal in this kata is to implement a difference function, which subtracts one list from another.
 
-// <h2>Explanation:</h2>
-// First window is {1, 2, 1, 3} and we have 3 distinct numbers;
-// Second window is {2, 1, 3, 4} and we have 4 distinct numbers;
-// Third window is {1, 3, 4, 2} and we have 4 distinct numbers;
-// Fourth window is {3, 4, 2, 3} and we have 3 distinct numbers.
+// It should remove all values from list a, which are present in list b. Each element x in both arrays is integer and 0 ≤ x ≤ 25. And lengths of arrays can reach 5 000 000 elements.
 
-// <br>
+// arrayDiffVeryFast([1,2],[1]) == [2]
+// If a value is present in b, all of its occurrences must be removed from another:
 
-// <h2>WARNING:</h2> 
-// Be careful about the performances: your function will have to mana
+// arrayDiffVeryFast([1,2,2,2,3],[2]) == [1,3]
+// arrayDiffVeryFast([1,2,2,2,3], [2]), [1,3]);
+// arrayDiffVeryFast([1,2,2,2,3,5,5,1,2,4,5,1], [2,1,5]), [3,4]);
+
+//concat
+//remove all duplicates
+
+
+function arrayDiffVeryFast(a, b) {
+    let obj={};
+    for(e of b)obj[e]=true;
+    return a.filter(val=>obj[val]?false:true)
+  }
