@@ -38,3 +38,10 @@ function digitalRoot(n) {
     }
     return n
   }
+
+
+  n = 1 + ( (n - 1) % 9 )
+
+  function digitalRoot(n){
+return 1 + ((n-1) % 9)
+  }
